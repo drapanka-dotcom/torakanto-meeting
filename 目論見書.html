@@ -34,6 +34,8 @@
     padding: 32px 28px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.04);
   }
+
+  /* --- 警告バナー --- */
   .warning-banner {
     background: var(--warn-bg);
     border: 2px solid var(--warn-bd);
@@ -53,6 +55,8 @@
     margin-top: 4px;
     color: #6b4e00;
   }
+
+  /* --- PDF/印刷用ヘッダー --- */
   .print-header {
     border: 1px solid var(--line);
     border-radius: 8px;
@@ -67,24 +71,58 @@
     font-size: 0.9rem;
   }
   .print-header .ph-title { font-weight: 700; }
-  .print-header .ph-meta { color: var(--muted); text-align: right; }
+  .print-header .ph-meta {
+    color: var(--muted);
+    text-align: right;
+  }
   .print-header .ph-meta span { margin-left: 16px; }
+
+  /* --- ドキュメントヘッダー --- */
   header.doc-header {
     border-bottom: 2px solid var(--accent);
     padding-bottom: 16px;
     margin-bottom: 20px;
   }
-  h1 { font-size: 1.6rem; margin: 0 0 8px; letter-spacing: 0.05em; }
-  .meta { font-size: 0.9rem; color: var(--muted); }
+  h1 {
+    font-size: 1.6rem;
+    margin: 0 0 8px;
+    letter-spacing: 0.05em;
+  }
+  .meta {
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
   .meta .updated { color: var(--accent); font-weight: 600; }
+
+  /* --- 更新履歴 --- */
   .history { margin-bottom: 24px; }
-  .history h3 { margin: 0 0 8px; font-size: 0.95rem; color: var(--muted); font-weight: 600; }
-  table.history-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .history h3 {
+    margin: 0 0 8px;
+    font-size: 0.95rem;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  table.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
   table.history-table th,
-  table.history-table td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; }
-  table.history-table th { background: #fafaf7; font-weight: 600; color: var(--muted); white-space: nowrap; }
+  table.history-table td {
+    border: 1px solid var(--line);
+    padding: 6px 10px;
+    text-align: left;
+  }
+  table.history-table th {
+    background: #fafaf7;
+    font-weight: 600;
+    color: var(--muted);
+    white-space: nowrap;
+  }
   table.history-table td.ver { white-space: nowrap; font-weight: 600; }
   table.history-table td.date { white-space: nowrap; }
+
+  /* --- 目次（番号はCSSカウンタで付与） --- */
   nav.toc {
     background: #fafaf7;
     border: 1px solid var(--line);
@@ -92,42 +130,203 @@
     padding: 16px 20px;
     margin-bottom: 28px;
   }
-  nav.toc h3 { margin: 0 0 10px; font-size: 0.95rem; color: var(--muted); font-weight: 600; }
-  nav.toc ol { list-style: none; padding-left: 0; margin: 0; counter-reset: toc; }
-  nav.toc > ol > li { counter-increment: toc; margin-bottom: 6px; }
-  nav.toc > ol > li > a::before { content: counter(toc) ". "; color: var(--accent); font-weight: 700; margin-right: 2px; }
-  nav.toc > ol > li > ol { counter-reset: subtoc; list-style: none; padding-left: 1.4em; margin: 4px 0 6px; }
-  nav.toc > ol > li > ol > li { counter-increment: subtoc; margin-bottom: 2px; }
-  nav.toc > ol > li > ol > li > a::before { content: counter(toc) "-" counter(subtoc) " "; color: var(--accent); font-weight: 600; margin-right: 2px; }
-  nav.toc a { color: #1a5fb4; text-decoration: none; border-bottom: 1px dotted transparent; transition: border-color 0.2s; }
-  nav.toc a:hover { border-bottom-color: #1a5fb4; }
-  h2 { font-size: 1.15rem; margin: 32px 0 12px; padding-left: 10px; border-left: 4px solid var(--accent); line-height: 1.4; scroll-margin-top: 20px; }
-  h2 .num { color: var(--accent); margin-right: 6px; font-weight: 700; }
-  h3 { font-size: 1rem; margin: 22px 0 10px; color: #222; scroll-margin-top: 20px; }
-  h3 .num { color: var(--accent); margin-right: 6px; font-weight: 700; }
-  h4 { font-size: 0.95rem; margin: 16px 0 8px; color: #444; font-weight: 600; }
+  nav.toc h3 {
+    margin: 0 0 10px;
+    font-size: 0.95rem;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  nav.toc ol {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    counter-reset: toc;
+  }
+  nav.toc > ol > li {
+    counter-increment: toc;
+    margin-bottom: 6px;
+  }
+  nav.toc > ol > li > a::before {
+    content: counter(toc) ". ";
+    color: var(--accent);
+    font-weight: 700;
+    margin-right: 2px;
+  }
+  nav.toc > ol > li > ol {
+    counter-reset: subtoc;
+    list-style: none;
+    padding-left: 1.4em;
+    margin: 4px 0 6px;
+  }
+  nav.toc > ol > li > ol > li {
+    counter-increment: subtoc;
+    margin-bottom: 2px;
+  }
+  nav.toc > ol > li > ol > li > a::before {
+    content: counter(toc) "-" counter(subtoc) " ";
+    color: var(--accent);
+    font-weight: 600;
+    margin-right: 2px;
+  }
+  nav.toc a {
+    color: #1a5fb4;
+    text-decoration: none;
+    border-bottom: 1px dotted transparent;
+    transition: border-color 0.2s;
+  }
+  nav.toc a:hover {
+    border-bottom-color: #1a5fb4;
+  }
+
+  /* --- 見出し --- */
+  h2 {
+    font-size: 1.15rem;
+    margin: 32px 0 12px;
+    padding-left: 10px;
+    border-left: 4px solid var(--accent);
+    line-height: 1.4;
+    scroll-margin-top: 20px;
+  }
+  h2 .num {
+    color: var(--accent);
+    margin-right: 6px;
+    font-weight: 700;
+  }
+  h3 {
+    font-size: 1rem;
+    margin: 22px 0 10px;
+    color: #222;
+    scroll-margin-top: 20px;
+  }
+  h3 .num {
+    color: var(--accent);
+    margin-right: 6px;
+    font-weight: 700;
+  }
+  h4 {
+    font-size: 0.95rem;
+    margin: 16px 0 8px;
+    color: #444;
+    font-weight: 600;
+  }
+
   p { margin: 0 0 12px; }
   ul, ol { margin: 0 0 12px; padding-left: 1.4em; }
   li { margin-bottom: 6px; }
+
   .checklist { list-style: none; padding-left: 0; }
-  .checklist li::before { content: "☑"; margin-right: 8px; color: var(--accent); font-weight: bold; }
-  .checklist li.todo::before { content: "□"; color: var(--muted); }
-  .note { background: #fafaf7; border: 1px solid var(--line); border-radius: 8px; padding: 14px 18px; margin: 12px 0; }
-  .note.caution { background: #fff7f5; border-color: #f0c8c0; }
-  table.spec-table { width: 100%; border-collapse: collapse; margin: 8px 0 10px; font-size: 0.92rem; }
+  .checklist li::before {
+    content: "☑";
+    margin-right: 8px;
+    color: var(--accent);
+    font-weight: bold;
+  }
+  .checklist li.todo::before {
+    content: "□";
+    color: var(--muted);
+  }
+
+  .note {
+    background: #fafaf7;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 12px 0;
+  }
+  .note.caution {
+    background: #fff7f5;
+    border-color: #f0c8c0;
+  }
+
+  /* --- 仕様テーブル --- */
+  table.spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 10px;
+    font-size: 0.92rem;
+  }
   table.spec-table th,
-  table.spec-table td { border: 1px solid var(--line); padding: 8px 12px; text-align: left; vertical-align: top; }
-  table.spec-table th { background: #fafaf7; font-weight: 600; color: var(--muted); width: 9em; white-space: nowrap; }
-  .step { counter-reset: step; list-style: none; padding-left: 0; }
-  .step > li { position: relative; padding-left: 2.2em; margin-bottom: 10px; }
-  .step > li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: 0.1em; width: 1.5em; height: 1.5em; line-height: 1.5em; text-align: center; background: var(--accent); color: #fff; border-radius: 50%; font-size: 0.8rem; font-weight: bold; }
-  .sub { margin: 12px 0 12px 1em; padding: 10px 16px; border-left: 3px solid var(--line); color: #333; }
+  table.spec-table td {
+    border: 1px solid var(--line);
+    padding: 8px 12px;
+    text-align: left;
+    vertical-align: top;
+  }
+  table.spec-table th {
+    background: #fafaf7;
+    font-weight: 600;
+    color: var(--muted);
+    width: 9em;
+    white-space: nowrap;
+  }
+
+  .step {
+    counter-reset: step;
+    list-style: none;
+    padding-left: 0;
+  }
+  .step > li {
+    position: relative;
+    padding-left: 2.2em;
+    margin-bottom: 10px;
+  }
+  .step > li::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0.1em;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+    text-align: center;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+  .sub {
+    margin: 12px 0 12px 1em;
+    padding: 10px 16px;
+    border-left: 3px solid var(--line);
+    color: #333;
+  }
   a { color: #1a5fb4; word-break: break-all; }
-  .url-box { background: #f2f6fc; border: 1px dashed #b8cbe6; border-radius: 8px; padding: 12px 16px; margin: 10px 0; font-size: 0.9rem; }
+  .url-box {
+    background: #f2f6fc;
+    border: 1px dashed #b8cbe6;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 0.9rem;
+  }
   .strong { font-weight: 700; }
   .muted { color: var(--muted); font-size: 0.92rem; }
-  footer.doc-footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 0.9rem; color: var(--muted); }
+
+  footer.doc-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
   footer.doc-footer h2 { border-left-color: #999; }
+
+  /* --- アーカイブ --- */
+  .archive-section {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 2px dashed var(--line);
+  }
+  .archive-section h2 {
+    border-left-color: #999;
+    font-size: 1.05rem;
+  }
+  .archive-section table.history-table {
+    font-size: 0.85rem;
+  }
+
   @media (max-width: 480px) {
     .doc { padding: 22px 16px; }
     h1 { font-size: 1.3rem; }
@@ -136,47 +335,255 @@
     .print-header .ph-meta span { margin-left: 0; margin-right: 16px; }
     table.spec-table th { width: auto; }
   }
+
+  /* --- 印刷/PDF用 --- */
   @media print {
     body { background: #fff; padding: 0; font-size: 11pt; }
-    .doc { border: none; border-radius: 0; box-shadow: none; padding: 0; max-width: none; }
-    .warning-banner { background: var(--warn-bg) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .doc {
+      border: none; border-radius: 0; box-shadow: none;
+      padding: 0; max-width: none;
+    }
+    .warning-banner {
+      background: var(--warn-bg) !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
     nav.toc a { color: #333; border-bottom: none; }
     h2 { page-break-after: avoid; }
     h3 { page-break-after: avoid; }
-    .note, .sub, .url-box, nav.toc, table.spec-table { page-break-inside: avoid; }
-    .step > li::before { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    table.spec-table th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .note, .sub, .url-box, nav.toc, table.spec-table, .archive-section { page-break-inside: avoid; }
+    .step > li::before {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    table.spec-table th {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
   }
 </style>
 </head>
 <body>
 <div class="doc">
 
+  <!-- 警告バナー（最上部） -->
   <div class="warning-banner">
     ⚠️ このファイルは関係者限り・外部公開厳禁
     <span class="sub">トラ関東会メンバー内での閲覧に限定してください。URL・内容の外部転載／共有は禁止です。</span>
   </div>
 
+  <!-- PDF/印刷用ヘッダー -->
   <div class="print-header">
     <div class="ph-title">トラ関東会 目論見書</div>
     <div class="ph-meta">
-      <span>発行日: 2026.11.10</span>
+      <span>発行日: 2026.11.20</span>
       <span>配布先: トラ関東会 関係者各位</span>
     </div>
   </div>
 
+  <!-- ドキュメントヘッダー -->
   <header class="doc-header">
     <h1>目論見書　トラ関東会</h1>
     <div class="meta">
-      <span class="updated">☑ 更新 @26.11.10（v1.3）</span>
+      <span class="updated">☑ 更新 @26.11.20（v2.0）</span>
     </div>
   </header>
 
+  <!-- 更新履歴／バージョン -->
   <section class="history">
     <h3>更新履歴</h3>
     <table class="history-table">
       <thead>
-        <tr><th>版</th><th>日付</th><th>内容</th></tr>
+        <tr>
+          <th>版</th>
+          <th>日付</th>
+          <th>内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="ver">v2.0</td>
+          <td class="date">2026.11.20</td>
+          <td>初回実施（'26.11.19）を踏まえメジャーバージョンアップ。構成を再整理し、「催行仕様」「オープンチャット」「終わりに」「自己紹介」を更新。v1系の更新履歴は巻末「アーカイブ」へ移動。</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 目次 -->
+  <nav class="toc" aria-label="目次">
+    <h3>目次</h3>
+    <ol>
+      <li><a href="#sec-caution">注意事項</a></li>
+      <li><a href="#sec-intro">はじめに</a></li>
+      <li>
+        <a href="#sec-spec">催行仕様</a>
+        <ol>
+          <li><a href="#sec-when-where">いつどこでだれが</a></li>
+          <li><a href="#sec-dayof">当日</a></li>
+        </ol>
+      </li>
+      <li>
+        <a href="#sec-openchat">オープンチャット</a>
+        <ol>
+          <li><a href="#sec-url">オープンチャットURL</a></li>
+        </ol>
+      </li>
+      <li><a href="#sec-end">終わりに</a></li>
+      <li><a href="#sec-profile">自己紹介</a></li>
+      <li><a href="#sec-archive">アーカイブ（v1更新履歴）</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1. 注意事項 -->
+  <section id="sec-caution">
+    <h2><span class="num">1.</span>注意事項</h2>
+    <div class="note caution">
+      <ul>
+        <li>ネットワークビジネスや情報商材等、趣旨と異なる目的の参加及び勧誘禁止。</li>
+        <li>未公開株、不動産、事業出資金等、詐欺を疑われるような投資話禁止。</li>
+        <li>男性諸氏<br>
+          言葉・態度に現れずとも汲み取りて慮る、良き紳士たらんことを。</li>
+        <li>その他、ルールや制約が増えないよう、いい感じで楽しんで下さい。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 2. はじめに -->
+  <section id="sec-intro">
+    <h2><span class="num">2.</span>はじめに</h2>
+    <p>
+      トラプレに集う方々がどんな人達なのか、<br>
+      目でみて、話せたらおもろそう、そんなノリです。<br>
+      初回（'26.11.19）が無事終わりました。<br>
+      次回以降も先々も、すべて未確定ですが、<br>
+      ノリでやってみましょ～。
+    </p>
+  </section>
+
+  <!-- 3. 催行仕様 -->
+  <section id="sec-spec">
+    <h2><span class="num">3.</span>催行仕様</h2>
+
+    <h3 id="sec-when-where"><span class="num">3-1</span>いつどこでだれが</h3>
+    <table class="spec-table">
+      <tbody>
+        <tr>
+          <th>エリア</th>
+          <td>前回来れなかった人と調整</td>
+        </tr>
+        <tr>
+          <th>時間帯と曜日</th>
+          <td>同上　所要時間 1～1.5h</td>
+        </tr>
+        <tr>
+          <th>店舗 &amp; 人員</th>
+          <td>同上<br>最低4人、多くても6人</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="muted">※ オープンチャットの意見集約によって流動的。<br>　 希望／住居／勤務地分布次第で調整。</p>
+
+    <h3 id="sec-dayof"><span class="num">3-2</span>当日</h3>
+    <div class="note">
+      以下は初回チェーン店カフェ例。次回カフェかどうか未定。
+    </div>
+    <ol class="step">
+      <li>
+        定刻で入店、好きな飲み物を頼んで下さい。
+        <div class="sub">
+          <p class="strong">A. 席写真がない場合</p>
+          <p>あなたが1番乗りです。<br>
+            テーブル席を確保 &amp; 席写真を撮って投稿。<br>
+            <span class="muted">（初回は自分が1番乗り予定なので、トラにまつわる何かをテーブル席置いてる予定。）</span><br>
+            投稿が同時 &amp; 被ったら、先着移動を。</p>
+          <p class="strong">B. 席写真有</p>
+          <p>画像をもとにぐるぐる探してね。<br>
+            多分会計並んでる前の人 &amp; 写真撮ろうとしてるヤツが居たら、そいつがルパンだ!!</p>
+        </div>
+      </li>
+      <li>定刻 &amp; 定員が集まったら自己紹介初めてね。</li>
+      <li>解散<br>
+        <span class="muted">スタートから概ね 1h、最長 1.5h を定刻終了。<br>
+        （遠方からの参加者がいる場合この限りではありません。）</span></li>
+    </ol>
+  </section>
+
+  <!-- 4. オープンチャット -->
+  <section id="sec-openchat">
+    <h2><span class="num">4.</span>オープンチャット</h2>
+    <p class="strong">トラ関東会</p>
+    <p>
+      場所や時間の調整、参加集計、当日の連絡等に使います。<br>
+      初回（'26.11.19）が無事終わって、何も決まってませんが、<br>
+      興味ある方はご自由にどうぞ。
+    </p>
+
+    <ol class="step">
+      <li>
+        後述URLへ入室し「自身のFincsプロフィール名＋参加挨拶」を投稿 &amp; コピー。<br>
+        <span class="muted">（オープンチャットの各自表示名は任意。USER名＋乱数の人以外はFincsプロフィール名推奨）</span>
+      </li>
+      <li>
+        Fincsトラ関東会スレッドのコメントにもコピペ投稿。<br>
+        <span class="muted">（1～2. 遅滞無く完了を以て、Fincs ⇔ 外部間の同一性確認とします。）</span>
+      </li>
+      <li>
+        「≡メニュー」「イベント」で以下を選んでください。
+        <ul>
+          <li><strong>3-A. 参加希望</strong> ⇒「参加」タップ</li>
+          <li><strong>3-B. 当日判断 or キャンセル待ち</strong> ⇒「未定」タップ</li>
+          <li><strong>3-C. 行きたいけど行けない</strong> ⇒「不参加」タップ　※次回日程の調整対象です。</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h3 id="sec-url"><span class="num">4-1</span>オープンチャットURL</h3>
+    <p class="muted">
+      善意を信じて入室フリー。<br>
+      何かあれば適宜、承認制になるかも。（外部への公開厳禁）
+    </p>
+    <div class="url-box">
+      <a href="https://line.me/ti/g2/A3Xw2s4YqfEfzv7mVsffk5lqD8LtiugHGuGyCQ?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default" target="_blank" rel="noopener noreferrer">
+        https://line.me/ti/g2/A3Xw2s4YqfEfzv7mVsffk5lqD8LtiugHGuGyCQ?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default
+      </a>
+    </div>
+  </section>
+
+  <!-- 5. 終わりに -->
+  <section id="sec-end">
+    <h2><span class="num">5.</span>終わりに</h2>
+    <ul>
+      <li>Fincsは、LINEのようなコミュニケーションツールでも、Youtubeのような動画配信サービスでもありません。<br>
+        ある程度の不便さはグッと堪えて、忍び難きを忍びましょう。</li>
+      <li>無事に実施出来たので「無かった事」にはならなかったけど、<br>
+        突然すべて止まったらごめんね!!</li>
+    </ul>
+  </section>
+
+  <!-- 6. 自己紹介 -->
+  <footer class="doc-footer" id="sec-profile">
+    <h2><span class="num">6.</span>自己紹介</h2>
+    <p>
+      30代残り数週間の埼玉在住都内勤務サボリーマン。<br>
+      若い頃約5年「お金を掛けず人が知り合い何かする」という趣旨で、<br>
+      20-30代向けの社会人サークルを運営してました。<br>
+      ハンドルネーム・Call me "  " 通りに呼び捨てしますので御愛嬌。<br>
+      最近酷使しているAIはDeepSeekです。これも DeepSeekで…。<br>
+      目的は特段ありません。「はじめに」の通りノリです。
+    </p>
+  </footer>
+
+  <!-- 7. アーカイブ（v1更新履歴） -->
+  <section id="sec-archive" class="archive-section">
+    <h2><span class="num">7.</span>アーカイブ（v1更新履歴）</h2>
+    <table class="history-table">
+      <thead>
+        <tr>
+          <th>版</th>
+          <th>日付</th>
+          <th>内容</th>
+        </tr>
       </thead>
       <tbody>
         <tr>
@@ -202,136 +609,6 @@
       </tbody>
     </table>
   </section>
-
-  <nav class="toc" aria-label="目次">
-    <h3>目次</h3>
-    <ol>
-      <li><a href="#sec-caution">注意事項</a></li>
-      <li><a href="#sec-intro">はじめに</a></li>
-      <li><a href="#sec-flow">起案～初回実施までの工程</a></li>
-      <li>
-        <a href="#sec-spec">仕様詳細</a>
-        <ol>
-          <li><a href="#sec-common">催行仕様</a></li>
-          <li><a href="#sec-openchat">参加希望者用オープンチャット</a></li>
-          <li><a href="#sec-dayof">実施日参加当日</a></li>
-        </ol>
-      </li>
-      <li><a href="#sec-end">終わりに</a></li>
-      <li><a href="#sec-profile">自己紹介</a></li>
-    </ol>
-  </nav>
-
-  <section id="sec-caution">
-    <h2><span class="num">1.</span>注意事項</h2>
-    <div class="note caution">
-      <ul>
-        <li>ネットワークビジネスや情報商材等、趣旨と異なる目的の参加及び勧誘禁止。</li>
-        <li>未公開株、不動産、事業出資金等、詐欺を疑われるような投資話禁止。</li>
-        <li>男性諸氏<br>
-          言葉・態度に現れずとも汲み取りて慮る、良き紳士たらんことを。</li>
-        <li>その他、ルールや制約が増えないよう、いい感じで楽しんで下さい。</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="sec-intro">
-    <h2><span class="num">2.</span>はじめに</h2>
-    <p>
-      トラプレに集う方々がどんな人達なのか、<br>
-      目でみて、話せたらおもろそう、そんなノリです。<br>
-      まずは小規模で１回トライして、<br>
-      継続 or 撤退 詳細を詰めるなど諸々判断できれば幸いです。
-    </p>
-  </section>
-
-  <section id="sec-flow">
-    <h2><span class="num">3.</span>起案～初回実施までの工程</h2>
-    <ul class="checklist">
-      <li>１．支援募集、ニーズ確認、見込集計</li>
-      <li>２．エリア選定</li>
-      <li>３．日程調整</li>
-      <li class="todo">４．実施　2026.11.19 実施見込</li>
-    </ul>
-  </section>
-
-  <section id="sec-spec">
-    <h2><span class="num">4.</span>仕様詳細</h2>
-
-    <h3 id="sec-common"><span class="num">4-1</span>催行仕様</h3>
-    <table class="spec-table">
-      <tbody>
-        <tr><th>エリア</th><td>初回、新橋駅近郊決定</td></tr>
-        <tr><th>時間帯と曜日</th><td>平日夜 17:30～　所要時間 1～1.5h</td></tr>
-        <tr><th>店舗 &amp; 人員</th><td>チェーン店カフェ　テーブル席<br>最低4人、多くても6人</td></tr>
-      </tbody>
-    </table>
-    <p class="muted">※ 上記は今後の参加希望者次第で流動的。住居／勤務地分布次第で調整。</p>
-
-    <h3 id="sec-openchat"><span class="num">4-2</span>参加希望者用オープンチャット</h3>
-    <p class="strong">トラ関東会</p>
-    <p>以下フローで入室 &amp; 実施日へ参加可能です。</p>
-    <ol class="step">
-      <li>
-        後述URLへ入室し「自身のFincsプロフィール名＋参加挨拶」を投稿 &amp; コピー。<br>
-        <span class="muted">（入室時の表示名はお任せ。USER名＋乱数の人以外はFincsプロフィール名推奨）</span>
-      </li>
-      <li>
-        Fincsトラ関東会スレッドのコメントにもコピペ投稿。<br>
-        <span class="muted">（1～2. 遅滞無く完了を以て、Fincs ⇔ 外部間の同一性確認とします。）</span>
-      </li>
-      <li>「イベント」⇒「参加」タップ</li>
-      <li>当日へ（他別記）</li>
-    </ol>
-    <h4>◆ オープンチャットURL</h4>
-    <p class="muted">善意を信じてまずは入室フリーで、適宜、承認制になるかも。（外部への公開厳禁）</p>
-    <div class="url-box">
-      <a href="https://line.me/ti/g2/A3Xw2s4YqfEfzv7mVsffk5lqD8LtiugHGuGyCQ?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default" target="_blank" rel="noopener noreferrer">
-        https://line.me/ti/g2/A3Xw2s4YqfEfzv7mVsffk5lqD8LtiugHGuGyCQ?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default
-      </a>
-    </div>
-
-    <h3 id="sec-dayof"><span class="num">4-3</span>実施日参加当日</h3>
-    <ol class="step">
-      <li>
-        定刻で入店、好きな飲み物頼んで下さい。
-        <div class="sub">
-          <p class="strong">A. 席写真がない場合</p>
-          <p>あなたが1番乗りです。<br>
-            テーブル席を確保 &amp; 席写真を撮って投稿。<br>
-            <span class="muted">（初回は自分が1番乗り予定なので、トラにまつわる何かをテーブル席置いてる予定。）</span><br>
-            投稿が同時 &amp; 被ったら、先着移動を。</p>
-          <p class="strong">B. 席写真有</p>
-          <p>画像をもとにぐるぐる探してね。<br>
-            多分会計並んでる前の人 &amp; 写真撮ろうとしてるヤツが居たら、そいつがルパンだ!!</p>
-        </div>
-      </li>
-      <li>定刻 &amp; 定員が集まったら自己紹介初めてね。</li>
-      <li>解散<br>
-        <span class="muted">スタートから概ね 1h、最長 1.5h を定刻終了。<br>
-        （遠方からの参加者がいる場合この限りではありません。）</span></li>
-    </ol>
-  </section>
-
-  <section id="sec-end">
-    <h2><span class="num">5.</span>終わりに</h2>
-    <ul>
-      <li>Fincsは、LINEのようなコミュニケーションツールでも、Youtubeのような動画配信サービスでもありません。<br>
-        ある程度の不便さはグッと堪えて、忍び難きを忍びましょう。</li>
-      <li>ここまで書いて全部なかったことになったらごめんね。</li>
-    </ul>
-  </section>
-
-  <footer class="doc-footer" id="sec-profile">
-    <h2><span class="num">6.</span>自己紹介</h2>
-    <p>
-      30代終わりかけ都内勤務サラリーマン。<br>
-      若い頃約5年「お金を掛けず人が知り合い何かする」という趣旨で、<br>
-      20-30代向けの社会人サークルを運営してました。<br>
-      ハンドルネーム通りに呼び捨てしますので御愛嬌。<br>
-      最近酷使しているAIはDeepSeekです。これも Deepseekで…。
-    </p>
-  </footer>
 
 </div>
 </body>
