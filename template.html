@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="$if(lang)$$lang$$else$ja$endif$">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>$title$</title>
+$for(css)$
+<link rel="stylesheet" href="$css$">
+$endfor$
+$for(header-includes)$
+$header-includes$
+$endfor$
+</head>
+<body>
+<div class="doc">
+
+$if(warning)$
+  <div class="warning-banner">
+    $warning$
+    $if(warning_sub)$<span class="sub">$warning_sub$</span>$endif$
+  </div>
+$endif$
+
+$if(issue_date)$
+  <div class="print-header">
+    <div class="ph-title">$if(print_title)$$print_title$$else$$title$$endif$</div>
+    <div class="ph-meta">
+      <span>発行日: $issue_date$</span>
+      $if(distribution)$<span>配布先: $distribution$</span>$endif$
+    </div>
+  </div>
+$endif$
+
+<header class="doc-header">
+  <h1>$title$</h1>
+  $if(updated)$<div class="meta"><span class="updated">$updated$</span></div>$endif$
+</header>
+
+$body$
+
+</div>
+</body>
+</html>

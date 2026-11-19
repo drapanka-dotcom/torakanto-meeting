@@ -1,0 +1,10 @@
+from: markdown+pipe_tables
+to: html5
+standalone: true
+template: template.html
+css: style.css
+metadata:
+  lang: ja
+toc: false
+number-sections: false
+highlight-style: none
